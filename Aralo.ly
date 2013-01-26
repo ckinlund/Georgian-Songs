@@ -1,4 +1,5 @@
 \version "2.16.1"
+\pointAndClickOff
 \header {
 	title = "Aralo"
 	poet = "Trad. Georgian"
