@@ -8,21 +8,24 @@
 }
 
 #(set-default-paper-size "letter" 'portrait)
-#(set-global-staff-size 16)
+#(set-global-staff-size 14)
+
+
 \paper { 
 	markup-system-spacing #'padding = #6
-	top-margin = 8
+%	top-margin = 8
 %	annotate-spacing = ##t
     system-system-spacing = 
-      #'((basic-distance . 12) 
-         (minimum-distance . 8) 
+      #'((basic-distance . 15) 
+         (minimum-distance . 12) 
          (padding . 1) 
-        (stretchability . 60)) 
- }
+        (stretchability . 30)) 
+}
+
 
 global = {
 	\key c \major
-	\time 2/4
+	\time 8/4
 }
 
 refrainLyrics = \lyricmode
@@ -88,6 +91,11 @@ stanzaThreeLyrics = \lyricmode
 	{ \refrainLyrics }
 }
 
+endLyrics = \lyricmode
+{
+	hey!
+}
+
 pirveliRefrain = \relative c''
 {
 	d8 d d4 e8. d16 c8 b
@@ -111,6 +119,14 @@ pirveliVerse = \relative c''
 		f8 e d c b c d b
 		{ \pirveliRefrain }
 	}
+}
+
+akhlaEnd = \relative c''
+{
+	\clef "treble"
+	\time 4/4
+	g1
+	\bar "|."
 }
 
 meoriVerse = \relative c''
@@ -168,35 +184,75 @@ baniVerseAltOne = \relative c'
 }
 
 \score {
-\new ChoirStaff \with { \global \override StaffGrouper #'staffgroup-staff-spacing #'basic-distance = #10 }
+\new ChoirStaff
 
-	<< 
+	<<
+
 	\new Voice = "pirveli"
-	{ \pirveliIntro \break \pirveliVerse \pirveliVerse \pirveliVerse }
+	{ \global
+	\pirveliIntro
+%	\once \override Score.RehearsalMark #'break-visibility = #end-of-line-visible
+%	\once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
+%	\mark \markup { \small \musicglyph #"scripts.coda" } \break
+	\pirveliVerse \break
+	\pirveliVerse \break
+	\pirveliVerse
+	\once \override Score.RehearsalMark #'break-visibility = #end-of-line-visible
+	\once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
+	\mark \markup { \small "Repeat beginning, finish on next measure" } \break
+%	\once \override Score.RehearsalMark #'self-alignment-X = #LEFT
+%	\mark \markup { \small \musicglyph #"scripts.segno" }
+	\akhlaEnd
+	}
 	\new Lyrics
 	\lyricsto "pirveli"
-	{ \pirveliLyricsIntro \stanzaOneLyrics \stanzaTwoLyrics \stanzaThreeLyrics }
-	
+	{ \pirveliLyricsIntro
+	\stanzaOneLyrics
+	\stanzaTwoLyrics
+	\stanzaThreeLyrics
+	\endLyrics }
+
 	\new Voice = "meori"
-	{ \meoriIntro \meoriVerse \meoriVerse \meoriVerse }
+	{ \global
+	\meoriIntro
+	\meoriVerse
+	\meoriVerse
+	\meoriVerse
+	\akhlaEnd }
 	\new Lyrics
 	\lyricsto "meori"
-	{ \meoriLyricsIntro \stanzaOneLyrics \stanzaTwoLyrics \stanzaThreeLyrics }
+	{ \meoriLyricsIntro
+	\stanzaOneLyrics
+	\stanzaTwoLyrics
+	\stanzaThreeLyrics
+	\endLyrics }
 
 	\new Voice = "bani"
-	{ \baniIntro \baniVerse \baniVerseAltOne \baniVerse }
+	{ \global
+	\baniIntro
+	\baniVerse
+	\baniVerseAltOne
+	\baniVerse
+	\akhlaEnd }
 	\new Lyrics
 	\lyricsto "bani"
-	{ \baniLyricsIntro \baniLyricsVerse \baniAltOne \baniLyricsVerse }
+	{ \baniLyricsIntro
+	\baniLyricsVerse
+	\baniAltOne
+	\baniLyricsVerse
+	\endLyrics }
+
 	>>
+
 \layout {
 	indent = 0 \cm
 	firstpagenumber = no
 	papersize = letter
+	ragged-last = ##t
     \context {
       \Staff
 %     \remove Bar_engraver
-%      \remove Time_signature_engraver
+      \remove Time_signature_engraver
 %      \remove Clef_engraver
     }
 }
