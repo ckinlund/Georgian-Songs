@@ -71,7 +71,7 @@ baniAltOne = \lyricmode
 stanzaOneLyrics = \lyricmode
 {
 	\set stanza = #"1." 
-	Che  -- mom -- ts’ve -- lo che -- mom -- k’vle -- lo
+	Che  -- mo mk’vle -- lo che -- mo -- mts’vle -- lo
 	che -- mo akh -- los me -- zo -- be -- lo
 	{ \refrainLyrics }
 }
@@ -79,16 +79,24 @@ stanzaOneLyrics = \lyricmode
 stanzaTwoLyrics = \lyricmode
 {
 	\set stanza = #"2." 
-	Shen rom tses -- khli mo -- mi -- ki -- de,
-	mit -- kha -- ro -- na ga -- na -- he -- na
+	Shen rom tsets -- khli mo -- mi -- k’i -- de,
+	mit -- khar ro -- gor da -- va -- ne -- lo
 	{ \refrainLyrics }
 }
 
 stanzaThreeLyrics = \lyricmode
 {
 	\set stanza = #"3." 
-	Ka -- lo she -- ni tet -- ri ka -- va
-	kals -- mi kon -- dem dzi -- na -- re -- so
+	Ka -- lo she -- ni tet -- ri k’a -- ba
+	ts’qals mi -- hkon -- da mdzi -- na -- re -- so
+	{ \refrainLyrics }
+}
+
+stanzaFourLyrics = \lyricmode
+{
+	\set stanza = #"4." 
+	Ne -- t’a -- vi ga -- ma -- ge -- bi -- na
+	vin ga -- k’o -- tsa mdzi -- na -- re -- so
 	{ \refrainLyrics }
 }
 
@@ -148,7 +156,7 @@ meoriIntro = \relative c''
 	\clef "treble"
 	r2 c16 c c c b8 a
 	g16 a b c b4 c8. b16 a8 g
-	b8 b b4
+	f8 g a ( b)
 	{ \meoriRefrain }
 }
 
@@ -193,16 +201,15 @@ baniVerseAltOne = \relative c'
 	{ \global
 	\pirveliIntro
 %	\once \override Score.RehearsalMark #'break-visibility = #end-of-line-visible
-%	\once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
-%	\mark \markup { \small \musicglyph #"scripts.coda" } \break
+	\once \override Score.RehearsalMark #'self-alignment-X = #LEFT
+	\mark \markup { \small "Alternate trio and group on repeats" }
+	\pirveliVerse \break
 	\pirveliVerse \break
 	\pirveliVerse \break
 	\pirveliVerse
-	\once \override Score.RehearsalMark #'break-visibility = #end-of-line-visible
+%	\once \override Score.RehearsalMark #'break-visibility = #end-of-line-visible
 	\once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
-	\mark \markup { \small "Repeat beginning, finish on next measure" } \break
-%	\once \override Score.RehearsalMark #'self-alignment-X = #LEFT
-%	\mark \markup { \small \musicglyph #"scripts.segno" }
+	\mark \markup { \small "After repeat, go to beginning, finish on next measure" }
 	\akhlaEnd
 	}
 	\new Lyrics
@@ -211,11 +218,13 @@ baniVerseAltOne = \relative c'
 	\stanzaOneLyrics
 	\stanzaTwoLyrics
 	\stanzaThreeLyrics
+	\stanzaFourLyrics
 	\endLyrics }
 
 	\new Voice = "meori"
 	{ \global
 	\meoriIntro
+	\meoriVerse
 	\meoriVerse
 	\meoriVerse
 	\meoriVerse
@@ -226,6 +235,7 @@ baniVerseAltOne = \relative c'
 	\stanzaOneLyrics
 	\stanzaTwoLyrics
 	\stanzaThreeLyrics
+	\stanzaFourLyrics
 	\endLyrics }
 
 	\new Voice = "bani"
@@ -234,6 +244,7 @@ baniVerseAltOne = \relative c'
 	\baniVerse
 	\baniVerseAltOne
 	\baniVerse
+	\baniVerseAltOne
 	\akhlaEnd }
 	\new Lyrics
 	\lyricsto "bani"
@@ -241,6 +252,7 @@ baniVerseAltOne = \relative c'
 	\baniLyricsVerse
 	\baniAltOne
 	\baniLyricsVerse
+	\baniAltOne
 	\endLyrics }
 
 	>>
@@ -249,7 +261,7 @@ baniVerseAltOne = \relative c'
 	indent = 0 \cm
 	firstpagenumber = no
 	papersize = letter
-	ragged-last = ##t
+%	ragged-last = ##t
     \context {
       \Staff
 %     \remove Bar_engraver
