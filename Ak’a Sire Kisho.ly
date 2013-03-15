@@ -1,4 +1,4 @@
-\version "2.14.2"
+\version "2.16.1"
 \header {
 	title = "Ak’a sire kisho"
 	composer = "As taught by Baia Zhuzhunashvili"
@@ -26,7 +26,7 @@ global = {
 }
 
 stanzaOne = \lyricmode
-{ \set stanza = #"  1."
+{ \set stanza = #"1."
 	A -- k’a si -- re ki -- sho,
 	al -- ma si -- re ki -- sho na
 	Kor -- de -- le -- khi -- ni,
@@ -34,7 +34,7 @@ stanzaOne = \lyricmode
 }
 
 stanzaTwo = \lyricmode
-{ \set stanza = #"  2." 
+{ \set stanza = #"2." 
 	I -- ro gu -- u -- ri -- sha,
 	a -- la mi -- re ki -- sho na
 	gu -- ma -- shi -- ne -- ni,
@@ -151,7 +151,7 @@ bani = \relative a' {
       \Staff
 %     \remove Bar_engraver
       \remove Time_signature_engraver
-      \remove Clef_engraver
+%s      \remove Clef_engraver
     }
 }
 }
