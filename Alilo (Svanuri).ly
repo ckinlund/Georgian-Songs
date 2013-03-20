@@ -23,7 +23,7 @@
 %}
 
 %{ Lyrics
-===============================================================================
+==============================================================================
 %}
 
 introVoice = \lyricmode
@@ -158,7 +158,7 @@ bani = \relative c'' {
 }
 
 \markup { \column{
-  \line { Verse \tiny \number 3. }
+  \line { \tiny \number 3. (Use first repeat system) }
   \line { (Wo di wo,) }
   \line { Wo-i a-ul ga-ul, }
   \line { Wo-i pekh-shish ga-ul }
