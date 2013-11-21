@@ -1,1 +1,6 @@
-.DS_Store
+*.pdf
+*.ps
+*.midi
+*.mid
+*.log
+*~
