@@ -101,24 +101,32 @@ Refrain = \lyricmode
 ===============================================================================
 %}
 
-panduri-tuning = \stringTuning < c' d' a' >
+panduri-tuning = \stringTuning < f' g' d'' >
 
-panduri = \relative c'
+panduri = \relative a'
 {
 	\clef "treble" \key a \minor
 	\time 6/4
-	e8 a e a e a e a e a e a
-	e8 a e a e a e a e a c, f
-	c8 f c f d g e a e a e a
-	e a fis a fis a fis a fis a e a
-	c,8 f c f d g e a e a e a 
-	fis8 a fis a fis d c f c f d g
+% Intro
+	a8 e' a, e' a, e' a, e' a, e' a, e'
+% Verse
+	a,8 e' a, e' a, e' a, e' a, e' a, g
+	f8  c' f, c' g  d' a  e' a, e' a, e'
+	a,8 e' a, d  a  d  a  d  a  d  a  g
+	f8  c' f, c' g  d'
+% Verse Refrain
+	a8 e' a, e' a, e'
+	a,8 d  a  d  a  g
+	f8  c' f, c' g  d'
+% Chorus
 	\repeat volta 2
 	{
-	e8 a e a e a fis a fis a e4
-	d8 g d g d4 < c d g >2.
+	a8  e' a, e' a, e'
+	a,8 d  a  d  a  d
+	g,8 d' g, d' f, c'
+	< g c d >2.
 	}
-	< d e a >4
+	< a\3 d\2 e\1 >4
 }
 
 solo = \relative c''
@@ -163,7 +171,7 @@ pirveli = \relative c''
 	}
 	\time 1/4
 	\once \override Score.RehearsalMark #'self-alignment-X = #LEFT
-	\mark \markup { \small \italic "Coda" }
+	\mark \markup { \small \italic "Fin" }
 	e16 e e8
 	\bar "|."
 }
@@ -297,15 +305,15 @@ bani = \relative c''
 
 	>>
 	
-%	\new TabStaff
-	\new Staff
+	\new TabStaff
+%	\new Staff
 	\with
 	{
-%		stringTunings = #panduri-tuning
+		stringTunings = #panduri-tuning
 		instrumentName = #"Panduri"
 %		shortInstrumentName = #"Pnd."
-		fontSize = #-1.5
-		\override StaffSymbol #'staff-space = #(magstep -1)
+%		fontSize = #-1
+%		\override StaffSymbol #'staff-space = #(magstep -1)
 	}
 
 	{ \panduri }

@@ -120,7 +120,7 @@ meori = \relative c'' {
 	\fill-line {
 %	\hspace #2
 	\column{
-	\line{ “Iavnana” has the same mixture of soothing sounds and real words as “lullabye,” its translation. }
+	\line{ “Iavnana” has the same mixture of soothing sounds and real words as “lullabye”, its translation. }
 	\line{ The text roughly translates to, “Here are violets, little lord, here are roses, little lord, hush, sleep.” }
 	\line{   }
 	\line{ This would be sung to children sick in bed, with the offering of flowers meant to placate }
