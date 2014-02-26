@@ -1,4 +1,4 @@
-\version "2.16.1"
+\version "2.18.0"
 \header {
 	title = "Guruli Alilo"
 	poet = "Guria"
@@ -8,7 +8,7 @@
 }
 
 #(set-default-paper-size "letter" 'portrait)
-#(set-global-staff-size 17.25)
+#(set-global-staff-size 17)
 
 global = {
   \key a \minor

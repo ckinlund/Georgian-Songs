@@ -80,7 +80,6 @@ pirveli = \relative a'' {
 
 meori = \relative a' {
 	\clef "treble"
-%	\override Staff.StaffSymbol #'line-count = #4
 	{
 		c4 c c c b a
 		c c c b a g
@@ -106,7 +105,7 @@ meori = \relative a' {
 } 
 
 bani = \relative a' {
-	{ \clef "treble" %\override Staff.StaffSymbol #'line-count = #4
+	{ \clef "treble"
 		g4 g g g g e
 		g g g e f g \time 4/4 a2. r4
 		a4 g f f e1 \breathe
@@ -149,9 +148,7 @@ bani = \relative a' {
 	papersize = letter
     \context {
       \Staff
-%     \remove Bar_engraver
       \remove Time_signature_engraver
-%s      \remove Clef_engraver
     }
 }
 }

@@ -1,5 +1,5 @@
-\version "2.16.0"
-% \pointAndClickOff
+\version "2.18.0"
+\pointAndClickOff
 \header {
 	title = "Tsmindao Ghmerto"
 	poet = ""
