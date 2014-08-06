@@ -26,24 +26,29 @@
 ==============================================================================
 %}
 
-StanzaOne = \lyricmode
+Refrain = \lyricmode
 {
 	Tsmin -- da -- i -- wo
+}
+
+VerseOne = \lyricmode
+{
 	ghme -- i -- er -- to -- i -- a
 }
 
-StanzaTwo = \lyricmode
+VerseTwo = \lyricmode
 {
-	Tsmin -- da -- i -- wo
 	dzli -- i -- e -- ro -- i -- a
 }
 
-StanzaThree = \lyricmode
+VerseThree = \lyricmode
 {
-	Tsmin -- da -- i -- wo
 	u -- kuv -- da wo -- i -- a
-	Sheg -- vi -- tsqa -- i -- a -- len
-	chven.
+}
+
+VerseFour = \lyricmode
+{
+	Sheg -- vi -- tsqa -- i -- a -- len chven.
 }
 
 %{ Music
@@ -71,7 +76,7 @@ pirveli = \relative c''
 	\time 6/4
 	d2 c b
 	\once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
-	\mark \markup { \small \italic "Repeat in full 3 times" }
+	\mark \markup { \small \italic "Repeat song 3 times" }
 }
 
 meori = \relative c''
@@ -109,39 +114,38 @@ bani = \relative c''
 
 \score {
 \new ChoirStaff {
-
 	<<
-			
+
 	\new Voice = "pirveliEkhma"
 	{ \pirveli }
 	\new Lyrics
 	\lyricsto "pirveliEkhma"
 	{
 		<<
-		\StanzaOne
+		{ \Refrain \VerseOne }
 		\new Lyrics
 			{
 			\set associatedVoice = "pirveliEkhma"
-			\StanzaTwo
+			\skip 1 \VerseTwo
 			}
 		>>
-		\StanzaThree
+		{ \Refrain \VerseThree \VerseFour }
 	}
 	
 	\new Voice = "meoriEkhma"
 	{ \meori }
-	\new Lyrics
+	\new Lyrics	
 	\lyricsto "meoriEkhma"
 	{
 		<<
-		\StanzaOne
+		{ \Refrain \VerseOne }
 		\new Lyrics
 			{
 			\set associatedVoice = "pirveliEkhma"
-			\StanzaTwo
+			{ \skip 1 \VerseTwo }
 			}
 		>>
-		\StanzaThree
+		{ \Refrain \VerseThree \VerseFour }
 	}
 		
 	\new Voice = "baniEkhma"
@@ -150,14 +154,14 @@ bani = \relative c''
 	\lyricsto "baniEkhma"
 	{
 		<<
-		\StanzaOne
+		{ \Refrain \VerseOne }
 		\new Lyrics
 			{
 			\set associatedVoice = "pirveliEkhma"
-			\StanzaTwo
+			{ \skip 1 \VerseTwo }
 			}
 		>>
-		\StanzaThree
+		{ \Refrain \VerseThree \VerseFour }
 	}
 		
 	>>
@@ -169,9 +173,11 @@ bani = \relative c''
 	papersize = letter
     \context {
 		\Staff
-%		\remove Bar_engraver
 		\remove Time_signature_engraver
-%		\remove Clef_engraver
     }
+	\context {
+		\Lyrics
+		\override LyricText.self-alignment-X = #LEFT
+	}
 }
 }

@@ -8,17 +8,29 @@
 }
 
 #(set-default-paper-size "letter" 'portrait)
-#(set-global-staff-size 16)
+#(set-global-staff-size 15)
 
 \paper { 
 	markup-system-spacing #'padding = #5
-	top-margin = 12
+	top-margin = 6
 %	annotate-spacing = ##t
     system-system-spacing = 
       #'((basic-distance . 16) 
          (minimum-distance . 12) 
          (padding . 1) 
-        (stretchability . 60)) 
+        (stretchability . 60))
+
+top-margin = 0.25\in
+bottom-margin = 0.25\in
+left-margin = 0.75\in
+right-margin = 0.75\in
+%{
+#(define fonts
+    (make-pango-font-tree "Athelas"
+                          "Seravek"
+                          "Courier Prime"
+                          (/ staff-height pt 20)))
+%}
 }
 
 % sbNote = { \once \set fontSize = #-2 }
@@ -162,51 +174,59 @@ bani = \relative c'
 
 \score {
 \transpose c a
-\new ChoirStaff {
+\new ChoirStaff
 	<<
 
+%	\partcombine \pirveli
 	\new Voice = "pirveliEkhma"
 	{ \pirveli }
+%	\new NullVoice = "pirveliAligner"
+%	\pirveli
 	\new Lyrics
 	\lyricsto "pirveliEkhma"
 	{ \PirveliBaniLyrics }
 	
 	\new Voice = "meoriEkhma"
 	{ \meori }
+%	\new NullVoice = "meoriAligner"
+%	\meori
 	\new Lyrics
 	\lyricsto "meoriEkhma"
 	{ \MeoriLyrics }
-		
+	
 	\new Voice = "baniEkhma"
 	{ \bani }
+%	\partcombine \bani
+%	\new NullVoice = "baniAligner"
+%	\bani
 	\new Lyrics
 	\lyricsto "baniEkhma"
 	{ \PirveliBaniLyrics }
-		
+	
 	>>
-}
+	
 \layout {
 	ragged-right = ##f
 	indent = 0.00 \cm
 	firstpagenumber = no
 	papersize = letter
-    \context {
+	\context {
 		\Staff
 %		\remove Bar_engraver
 		\remove Time_signature_engraver
 %		\remove Clef_engraver
-    }
+	}
 }
 }
 
 \markup { \italic
 	\fill-line {
-	\column {
+	\center-column {
 		\line { }
 		\line { Mother would like to die for you, my child.
 				She is destroyed, your own mother. }
-		\line { Where did you go with your pack and shepherd’s coat, }
-		\line { where did you leave the shepherd’s staff that was at your side? }
+		\line { Where did you go with your pack and shepherd’s coat,
+				where did you leave the shepherd’s staff that was at your side? }
 		\line { I will throw the black bridle over your horse,
 				let it out into the forest and field. }
 		\line { Mother would like to die for you, my child.

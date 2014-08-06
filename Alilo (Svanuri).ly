@@ -8,11 +8,17 @@
 }
 
 #(set-default-paper-size "letter" 'portrait)
-#(set-global-staff-size 19)
+#(set-global-staff-size 16)
 
 \paper { 
-	markup-system-spacing #'padding = #5
-	top-margin = 12
+	
+top-margin = 0.75\in
+bottom-margin = 1\in
+left-margin = 0.75\in
+right-margin = 0.75\in
+
+markup-system-spacing #'padding = #5
+top-margin = 12
 %	annotate-spacing = ##t
     system-system-spacing = 
       #'((basic-distance . 20) 
@@ -31,31 +37,31 @@ introVoice = \lyricmode
 
 stanzaOnePirveli = \lyricmode
 	{ \repeat volta 2
-	{ wo -- i -- a -- li -- lo -- sa, }
+	{ wo -- i a -- li -- lo -- sa, }
 	\alternative {
-	{ ta -- i -- a -- li -- lo sa da a -- li -- lo -- sa ta -- li -- lo, }
-	{ na -- i -- a -- pe -- khi sa da ekh -- sa -- pekh -- sa na -- pe -- khi -- sa, }
+	{ ta -- i a -- li -- lo sa da a -- li -- lo -- sa ta -- li -- lo, }
+	{ na -- i a -- pe -- khi sa da ekh -- sa -- pekh -- sa na -- pe -- khi -- sa, }
 	}
 }
 
 stanzaOne = \lyricmode
 	{ %\set stanza = #"1."
 	\repeat volta 2
-	{ wo -- i -- a -- li -- lo -- sa, }
+	{ wo -- i a -- li -- lo -- sa, }
 	\alternative {
-	{ ta -- i -- a -- li -- lo sa da a -- li -- lo -- sa ta -- li -- lo, }
-	{ na -- i -- a -- pe -- khi sa da ekh -- sa -- pekh -- sa na -- pe -- khi -- sa, }
+	{ ta -- i a -- li -- lo sa da a -- li -- lo -- sa ta -- li -- lo, }
+	{ na -- i a -- pe -- khi sa da ekh -- sa -- pekh -- sa na -- pe -- khi -- sa, }
 	}
 }
 
 stanzaTwoPirveli = \lyricmode
 	{ %\set stanza = #"2."
-	\skip8 \skip8 \skip4 wo -- i -- ekh -- sa -- pekh -- sa,
+	\skip8 \skip8 \skip4 wo -- i ekh -- sa -- pekh -- sa,
 	}
 
 stanzaTwo = \lyricmode
 	{ %\set stanza = #"2."
-	wo -- i -- ekh -- sa -- pekh -- sa,
+	wo -- i ekh -- sa -- pekh -- sa,
 	}
 
 %{ Music
@@ -67,7 +73,7 @@ pirveli = \relative c'' {
 %	\bar "|:"
 	\repeat volta 2
 	{
-		\partial 2 d8 e d4 \bar "’" e4. f8 e4 e8( d) c2 bes-. \break
+		\partial 2 d8 e d4 \bar "’" e4. f8 e4 e8( d) c2 bes-. %\break
 	}
 	\alternative
 	{ 
@@ -144,7 +150,7 @@ bani = \relative c'' {
 	>>
 }
 \layout {
-	ragged-right = ##f
+%	ragged-right = ##f
 	indent = 0.00 \cm
 	firstpagenumber = no
 	papersize = letter
@@ -157,11 +163,19 @@ bani = \relative c'' {
 }
 }
 
-\markup { \column{
-  \line { \tiny \number 3. (Use first repeat system) }
-  \line { (Wo di wo,) }
-  \line { Wo-i a-ul ga-ul, }
-  \line { Wo-i pekh-shish ga-ul }
-  \line { da a-ul ga-ul pekh-shish ga-ul. }
-  }
+\markup { \normalsize
+%	\fill-line {
+		\column{
+				\line { \number 3. \italic {(Use first repeat system)} }
+				\line { (Wo di wo), woi aul gaul, }
+				\line { woi pekhshish gaul, da aul gaul pekhshish gaul }
+				}
+				\hspace #10
+		\column {
+
+				\line { \number 4. \italic { (Repeat first verse) }}
+				\line { (Wo di wo), woi alilo sa, }
+				\line { tai alilo sa, da alilo sa talilo }
+				}
+%	}
 }

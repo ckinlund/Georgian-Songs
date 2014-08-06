@@ -1,4 +1,4 @@
-\version "2.16.1"
+\version "2.18.0"
 \header {
 	title = "Ak’a sire kisho"
 	composer = "As taught by Baia Zhuzhunashvili"
@@ -8,10 +8,24 @@
 }
 
 #(set-default-paper-size "letter" 'portrait)
-#(set-global-staff-size 18)
+#(set-global-staff-size 16)
 \paper { 
+%{
+	#(define fonts
+	(make-pango-font-tree	"Athelas"
+							"Avenir Next"
+							"Source Code Pro"
+							(/ staff-height pt 20)
+							)
+	)
+%}
+top-margin = 0.75\in
+bottom-margin = 1\in
+left-margin = 0.75\in
+right-margin = 0.75\in
+
 	markup-system-spacing #'padding = #6
-	top-margin = 15
+	top-margin = 12
 %	annotate-spacing = ##t
     system-system-spacing = 
       #'((basic-distance . 12) 
@@ -51,74 +65,63 @@ refrain = \lyricmode
 	chki -- mi -- tso -- da.
 }
 
-pirveli = \relative a'' {
-	\clef "treble"
-	
+pirveli = \relative a'' { \clef "treble"
 	{
-		e4 e e e d c
-		e4 e e d c b
-		\time 4/4
-		a2. r4
-		a4 b c d
-		e2. ( d4) \breathe
-		\time 6/4
-		c4 c d c b a
-		\time 4/4
-		g2. r4
-		\time 6/4
-%		\repeat volta 2
-%		{
-			e'2. f8( e) d4 c
-			e4 e d2 e \fermata
-			c4. d8 b2 a
-			e'2. f8( e) d4 c
-			e4 e d2 e \fermata
-			\time 8/4 c4. d8 b2 a1 \bar "|."
-%		}
+	e4 e e e d c
+	e4 e e d c b
+	\time 4/4
+	a2. r4
+	a4 b c d
+	e2. ( d4) \breathe
+	\time 6/4
+	c4 c d c b a
+	\time 4/4
+	g2. r4
+	\time 6/4
+	e'2. f8( e) d4 c
+	e4 e d2 e \fermata
+	c4. d8 b2 a
+	e'2. f8( e) d4 c
+	e4 e d2 e \fermata
+	\time 8/4
+	c4. d8 b2 a1 \bar "|."
 	}
 }
 
-meori = \relative a' {
-	\clef "treble"
+meori = \relative a' { \clef "treble"
 	{
-		c4 c c c b a
-		c c c b a g
-		\time 4/4
-		a2. r4
-		a4 g a a
-		b1 \breathe
-		\time 6/4
-		a4 a b a g f
-		\time 4/4
-		g2. r4
-		\time 6/4
-%		\repeat volta 2
-%		{
-			c2. c4 b a
-			c c b2 b \fermata
-			a4. a8 g2 a
-			c2. c4 b a
-			c c b2 b \fermata
-			\time 8/4 a4. a8 g2 a1
-%		}
+	c4 c c c b a
+	c c c b a g
+	\time 4/4
+	a2. r4
+	a4 g a a
+	b1 \breathe
+	\time 6/4
+	a4 a b a g f
+	\time 4/4
+	g2. r4
+	\time 6/4
+	c2. c4 b a
+	c c b2 b \fermata
+	a4. a8 g2 a
+	c2. c4 b a
+	c c b2 b \fermata
+	\time 8/4 a4. a8 g2 a1
 	}
 } 
 
-bani = \relative a' {
-	{ \clef "treble"
-		g4 g g g g e
-		g g g e f g \time 4/4 a2. r4
-		a4 g f f e1 \breathe
-		\time 6/4
-		f4 f f d e f \time 4/4 g2. r4
-		\time 6/4
-%		\repeat volta 2
-%		{
-			g2. g4 g e g g g2 e \fermata
-			f4. f8 g2 a
-			c,2. d4 e f g g g2 e \fermata
-			\time 8/4 f4. f8 g2 a1
-%		}
+bani = \relative a' { \clef "treble"
+	{
+	g4 g g g g e
+	g g g e f g \time 4/4 a2. r4
+	a4 g f f e1 \breathe
+	\time 6/4
+	f4 f f d e f \time 4/4 g2. r4
+	\time 6/4
+	g2. g4 g e g g g2 e \fermata
+	f4. f8 g2 a
+	c,2. d4 e f g g g2 e \fermata
+	\time 8/4 f4. f8 g2 a1
 	}
 }
 
@@ -153,9 +156,8 @@ bani = \relative a' {
 }
 }
 
-\markup { 
+\markup {
 	\fill-line {
-%	\hspace #2
 	\column{
 	\line{ Children in Samegrelo (Western Georgia) were frequently kidnapped for ransom, }
 	\line{ due in part to the high wealth of the region and the noble status of many families. }

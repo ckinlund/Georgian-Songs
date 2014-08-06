@@ -4,11 +4,12 @@
 	poet = "Guria"
 	arranger = "Transcribed by Colin Kinlund"
 	composer = "As sung by Kavkasia / Rustavi Choir"
-	tagline = ##f
+%	tagline = ##f
 }
 
+\pointAndClickOff
 #(set-default-paper-size "letter" 'portrait)
-#(set-global-staff-size 17)
+#(set-global-staff-size 15)
 
 global = {
   \key a \minor
@@ -25,8 +26,21 @@ global = {
       #'((basic-distance . 17) 
          (minimum-distance . 12) 
          (padding . 1) 
-%        (stretchability . 30)) 
- }
+%        (stretchability . 30))
+
+top-margin = 0.75\in
+bottom-margin = 1\in
+left-margin = 0.75\in
+right-margin = 0.75\in
+%{
+#(define fonts
+    (make-pango-font-tree "Athelas"
+                          "Seravek"
+                          "Courier Prime"
+                          (/ staff-height pt 20)))
+%}
+}
+
 
 
 %{ Lyrics
